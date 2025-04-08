@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthorCreateRequest extends FormRequest
+class AuthorStoreRequest extends FormRequest
 {
     
     /**
