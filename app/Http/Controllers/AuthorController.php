@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthorStoreRequest;
 use App\Http\Requests\AuthorCreateRequest;
 use App\Http\Requests\AuthorUpdateRequest;
 
@@ -36,7 +37,7 @@ class AuthorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AuthorCreateRequest $request)
+    public function store(AuthorStoreRequest $request)
     {
         $author = Author::create([
             'name' => $request->name,
@@ -100,6 +101,7 @@ class AuthorController extends Controller
     public function destroy(string $id)
     {
         $author = Author::findOrFail($id); 
+        
         $author->books()->detach(); 
         $author->delete();
         return redirect()->route('authors.index');
